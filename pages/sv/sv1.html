@@ -21,13 +21,13 @@
         </header>
         <main class="container mt-4">
             <div class="row">
-                <div class="col-9 card-list">
+                <div class="col card-list">
                     <div class="container gx-1">
                         <div class="row g-4 mb-4"> 
-                            <div class="col-7">
+                            <div class="col-12 col-sm-7">
                                 <img class="img-fluid" src="../../lib/imgs/set-logos/SV.png">
                             </div>
-                            <div class="col-5 align-self-center">
+                            <div class="col-12 col-sm-5 align-self-center">
                                 <div id="setInfo"></div>
                             </div>
                         </div>
@@ -36,7 +36,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-3">
+                <div class="col-3 d-none d-sm-block">
                     <div class="contatiner">
                         <div class="side-bar-nav mb-3">
                             <div class="accordion" id="sideNavAccordion">
@@ -223,18 +223,18 @@
                         const formattedNumber = originalNumber.toString().padStart(3, '0');
 
                         const cardElement = document.createElement('div');
-                        cardElement.setAttribute('class', `col-3 ${card.name} card-container mb-4`);
+                        cardElement.setAttribute('class', `col-6 col-md-3 ${card.name} card-container mb-4`);
                         cardElement.innerHTML = `
                             <div class="card">
                                 <img src="${card.images.small}" alt="${card.name}" loading="lazy">
                             
                                 <div class="container">
                                     <div class="row card-info">
-                                        <div class="col-9 text-start p-0 card-details">
+                                        <div class="col-7 col-sm-9 text-start p-0 card-details">
                                             <p class="card-name">${card.name}</p>
                                             <p class="card-number">#${formattedNumber}</p>
                                         </div>
-                                        <div class="col-3 text-end align-items-end p-0 pricing">
+                                        <div class="col-5 col-sm-3 text-end align-items-end p-0 pricing">
                                             <p class="card-price">$${card.cardmarket.prices.averageSellPrice}</p>
                                         </div>
                                     </div>
