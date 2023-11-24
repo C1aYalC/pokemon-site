@@ -1,0 +1,262 @@
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html, body, div, span, object, iframe, figure, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, code, em, img, small, strike, strong, sub, sup, tt, b, u, i, ol, ul, li, fieldset, form, label, table, caption, tbody, tfoot, thead, tr, th, td, main, canvas, embed, footer, header, nav, section, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  text-decoration: none;
+}
+
+footer, header, nav, section, main {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+input {
+  -webkit-appearance: none;
+  border-radius: 0;
+}
+
+@font-face {
+  font-family: "Geomanist";
+  font-style: normal;
+  font-weight: 700;
+  src: url("../fonts/GEOMANIST-ULTRA.OTF") format("OTF");
+}
+@font-face {
+  font-family: "Geomanist-Reg";
+  font-style: normal;
+  font-weight: 100;
+  src: url("../fonts/GEOMANIST-REGULAR.OTF") format("OTF");
+}
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  color: #f6f6f6;
+  line-height: 1.2;
+  margin: 0;
+  padding: 0;
+  text-transform: uppercase;
+  font-family: "Geomanist";
+  font-weight: 900;
+}
+
+p, span {
+  color: #f6f6f6;
+  line-height: 1.2;
+  font-family: "Geomanist";
+  font-weight: 400;
+}
+p.reverse, span.reverse {
+  color: #222222;
+}
+
+.header {
+  background-color: #222222;
+  background: linear-gradient(0deg, rgb(34, 34, 34) 0%, rgb(51, 51, 51) 100%);
+  border-bottom: 1px solid #77dd77;
+  border-top: 1px solid #de78ab;
+  padding: 16px 0;
+}
+.header a {
+  display: inline-block;
+  position: relative;
+}
+@media (max-width: 1199px) {
+  .header a {
+    display: block;
+  }
+}
+.header img {
+  width: 200px;
+}
+@media (max-width: 1199px) {
+  .header img {
+    display: block;
+    margin: 0 auto;
+    position: relative;
+  }
+}
+
+body {
+  background: #222222 top center/35% repeat url("/lib/imgs/bgPattern.png");
+}
+
+.set-title {
+  border-bottom: 2px solid #78bbf6;
+  margin-bottom: 8px;
+  padding: 8px 0;
+}
+
+.card {
+  background: #f6f6f6;
+  background: linear-gradient(0deg, rgb(170, 170, 170) 0%, rgb(246, 246, 246) 50%);
+  border: none;
+}
+.card.set-card {
+  border: 1px solid #de78ab;
+  border-radius: 16px;
+  padding: 16px;
+  transition: all 0.15s;
+}
+.card.set-card a {
+  display: inline-block;
+  width: 100%;
+}
+.card.set-card .progress {
+  background-color: transparent;
+  border: 1px solid #222222;
+}
+.card.set-card .progress .progress-bar {
+  background-color: #77dd77;
+  color: #222222;
+  font-size: 14px;
+  font-family: "Geomanist";
+  font-weight: 900;
+}
+.card.set-card:hover {
+  transform: scale(1.05);
+}
+
+.card-list {
+  background-color: #222222;
+  border: 1px solid #de78ab;
+  border-radius: 4px;
+  padding: 16px;
+}
+.card-list .set-details svg {
+  margin: 0 8px 0 0;
+  width: 16px;
+}
+.card-list .card-container .card {
+  background: #282f3d;
+  border-radius: 12px 12px 8px 8px;
+  box-sizing: border-box;
+}
+.card-list .card-container .card-info {
+  font-size: 14px;
+  letter-spacing: 0.75px;
+  padding: 8px 12px;
+}
+.card-list .card-container .card-info .card-details p {
+  margin-bottom: 8px;
+}
+.card-list .card-container .card-info .card-details p:last-child {
+  margin-bottom: 0;
+}
+.card-list .card-container .card-info .card-details .card-name {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.card-list .card-container .card-info .card-details .card-number {
+  color: #de78ab;
+  font-size: 12px;
+}
+.card-list .card-container .card-info .pricing .card-price {
+  color: #77dd77;
+}
+
+.side-bar-nav .accordion .accordion-item {
+  background-color: transparent;
+}
+.side-bar-nav .accordion .accordion-button,
+.side-bar-nav .accordion .accordion-item {
+  border: none;
+  outline: none;
+}
+.side-bar-nav .accordion-button {
+  background-color: #77dd77;
+  background: linear-gradient(0deg, rgb(119, 221, 119) 0%, rgb(151, 255, 151) 100%);
+  border: none;
+  border-radius: 4px;
+  color: #222222;
+  font-size: 16px;
+  outline: none;
+  padding: 12px;
+  text-transform: uppercase;
+  width: 100%;
+  font-family: "Geomanist";
+  font-weight: 900;
+}
+.side-bar-nav .accordion-button:after {
+  background-image: none;
+  color: #222222;
+  content: "\f078";
+  font-family: "Font Awesome 5 Free";
+  font-size: 20px;
+  font-weight: 900;
+  transform-origin: center;
+}
+.side-bar-nav .accordion-button[aria-expanded=true] {
+  border-radius: 4px 4px 0 0;
+}
+.side-bar-nav .accordion-button:focus {
+  box-shadow: none;
+  outline: none;
+}
+.side-bar-nav .accordion-button:not(collapsed) {
+  box-shadow: none;
+}
+.side-bar-nav .accordion-body {
+  background: #f6f6f6;
+  border-bottom: 1px solid #77dd77;
+  border-left: 1px solid #77dd77;
+  border-radius: 0 0 4px 4px;
+  border-right: 1px solid #77dd77;
+  padding: 8px;
+}
+.side-bar-nav .accordion-body li {
+  font-family: "Geomanist";
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+.side-bar-nav .accordion-body li:last-child {
+  margin-bottom: 0;
+}
+.side-bar-nav .accordion-body li a {
+  border-radius: 4px;
+  color: #222222;
+  display: block;
+  font-size: 14px;
+  margin: 2px 0;
+  padding: 8px;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.side-bar-nav .accordion-body li a.current {
+  background-color: #de78ab;
+  color: #f6f6f6;
+}
+.side-bar-nav .accordion-body li a:hover:not(.current), .side-bar-nav .accordion-body li a:focus:not(.current) {
+  background: #222222;
+  color: white;
+}/*# sourceMappingURL=global.css.map */

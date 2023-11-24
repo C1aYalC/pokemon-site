@@ -1,0 +1,36 @@
+@import "variables";
+@import "mixins";
+
+@font-face {
+    font-family: 'Geomanist';
+    font-style: normal;
+    font-weight: 700;         
+    src: url('../fonts/GEOMANIST-ULTRA.OTF') format('OTF')
+}
+
+@font-face {
+    font-family: 'Geomanist-Reg';
+    font-style: normal;
+    font-weight: 100;         
+    src: url('../fonts/GEOMANIST-REGULAR.OTF') format('OTF')
+}
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+    color: $white;
+    line-height: 1.2;
+    margin: 0;
+    padding: 0;
+    text-transform: uppercase;
+    @include GeoUltra();
+}
+
+p, span{
+    color: $white;
+    line-height: 1.2;
+    @include GeoReg();
+
+    &.reverse{
+        color: $black;
+    }
+}

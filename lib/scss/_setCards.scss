@@ -1,0 +1,36 @@
+@import "variables";
+@import "mixins";
+
+.card{
+    background: $white;
+    background: linear-gradient(0deg, rgba(170,170,170,1) 0%, rgba(246,246,246,1) 50%);
+    border: none;
+
+    &.set-card{
+        border: 1px solid $pink;
+        border-radius: 16px;
+        padding: 16px;
+        transition: all .15s;
+
+        a{
+            display: inline-block;
+            width: 100%;
+        }
+        
+        .progress{
+            background-color: transparent;
+            border: 1px solid $black;
+
+            .progress-bar{
+                background-color: $green;
+                color: $black;
+                font-size: 14px;
+                @include GeoUltra();
+            }
+        }
+
+        &:hover{
+            transform: scale(1.05);
+        }
+    }
+}

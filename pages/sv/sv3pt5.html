@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/e56c958c32.js" crossorigin="anonymous"></script>
+        <link href="/lib/css/global.css" rel="stylesheet">
+    </head>
+    <body>
+        <header class="header">
+            <div class="container">
+                <a href="/">
+                    <img src="/lib/imgs/c1-pokeball-logo.svg" alt="C1 Logo">
+                </a>
+            </div>
+        </header>
+        <main class="container mt-4">
+            <div class="row">
+                <div class="col-9 card-list">
+                    <div class="container gx-1">
+                        <div class="row g-4 mb-4"> 
+                            <div class="col-7">
+                                <img class="img-fluid" src="/lib/imgs/set-logos/151.png">
+                            </div>
+                            <div class="col-5 align-self-center">
+                                <div id="setInfo"></div>
+                            </div>
+                        </div>
+                        <div class="row g-3" id="setCards">
+                    
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="contatiner">
+                        <div class="side-bar-nav mb-3">
+                            <div class="accordion" id="sideNavAccordion">
+                                <div class="accordion-item mb-3">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#svSets" type="button" aria-expanded="true" aria-controls="svSets">Scarlet & Violet</button>
+                                    </h2>
+                                    <div id="svSets" class="accordion-collapse collapse show" data-bs-parent="#sideNavAccordion">
+                                        <div class="accordion-body">
+                                            <ul>
+                                                <li>
+                                                    <a href="sv1.html">Base Set</a>
+                                                </li>
+                                                <li>
+                                                    <a href="sv2.html">Paldea Evolved</a>
+                                                </li>
+                                                <li>
+                                                    <a href="sv3.html">Obsidian Flames</a>
+                                                </li>
+                                                <li>
+                                                    <a href="sv3pt5.html" class="current">SV 151</a>
+                                                </li>
+                                                <li>
+                                                    <a href="sv4.html">Paradox Rift</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item mb-3">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#swshSets" type="button" aria-expanded="false" aria-controls="swshSets">Sword & Shield</button>
+                                    </h2>
+                                    <div id="swshSets" class="accordion-collapse collapse" data-bs-parent="#sideNavAccordion">
+                                        <div class="accordion-body">
+                                            <ul>
+                                                <li>
+                                                    <a href="sv1.html">Base Set</a>
+                                                </li>
+                                                <li>
+                                                    <a href="sv2.html">Rebel Clash</a>
+                                                </li>
+                                                <li>
+                                                    <a href="sv3.html">Darkness Ablaze</a>
+                                                </li>
+                                                <li>
+                                                    <a href="sv3pt5.html">Champions Path</a>
+                                                </li>
+                                                <li>
+                                                    <a href="sv4.html">Vivid Voltage</a>
+                                                </li>
+                                                <li>
+                                                    <a href="sv4.html">Shining Fates</a>
+                                                </li>
+                                                <li>
+                                                    <a href="sv4.html">Battle Styles</a>
+                                                </li>
+                                                <li>
+                                                    <a href="sv4.html">Chilling Reign</a>
+                                                </li>
+                                                <li>
+                                                    <a href="sv4.html">Evolving Skies</a>
+                                                </li>
+                                                <li>
+                                                    <a href="sv4.html">Celebrations</a>
+                                                </li>
+                                                <li>
+                                                    <a href="sv4.html">Fusion Strike</a>
+                                                </li>
+                                                <li>
+                                                    <a href="sv4.html">Brilliant Stars</a>
+                                                </li>
+                                                <li>
+                                                    <a href="sv4.html">Astral Radiance</a>
+                                                </li>
+                                                <li>
+                                                    <a href="sv4.html">Pokemon GO</a>
+                                                </li>
+                                                <li>
+                                                    <a href="sv4.html">Lost Origin</a>
+                                                </li>
+                                                <li>
+                                                    <a href="sv4.html">Silver Tempest</a>
+                                                </li>
+                                                <li>
+                                                    <a href="sv4.html">Crown Zenith</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- API Fetch for Card List -->
+            <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+            <script>
+                const apiKey = 'fafa67e0-50c7-4e86-a4ad-4b936b9b85e4';
+                const apiUrl = 'https://api.pokemontcg.io/v2/cards';
+                const setCodes = ['sv3pt5'];
+
+                function fetchAndDisplaySetCards() {
+                    const setCardsContainer = document.getElementById('setCards');
+
+                    setCardsContainer.innerHTML = '';
+
+                    setCodes.forEach(setCode => {
+                        let currentPage = 1;
+
+                        const fetchAllPages = () => {
+                            const setApiUrl = `${apiUrl}?q=set.id:${setCode}&page=${currentPage}&orderBy=number`;
+
+                            axios.get(setApiUrl, {
+                                    headers: {
+                                        'X-Api-Key': apiKey,
+                                    },
+                                })
+                                .then(response => {
+                                    const cards = response.data.data;
+                                    displaySetCards(setCardsContainer, cards);
+
+                                    const totalCards = response.data.totalCount;
+                                    let cardCount = response.data.count;
+                                    if (cardCount < totalCards) {
+                                        currentPage++;
+                                        fetchAllPages();
+                                    }
+                                })
+                                .catch(error => {
+                                    console.error(error);
+                                });
+                        };
+
+                        fetchAllPages();
+                    });
+                }
+
+                function fetchAndDisplaySetInfo() {
+                    const apiUrlSets = `https://api.pokemontcg.io/v2/sets/${setCodes}`;
+                    const setInfoContainer = document.getElementById('setInfo');
+
+                    axios.get(apiUrlSets, {
+                            headers: {
+                                'X-Api-Key': apiKey,
+                            },
+                        })
+                        .then(response => {
+                            const setInfo = response.data.data;
+                            displaySetInfo(setInfoContainer, setInfo);
+                        })
+                        .catch(error => {
+                            console.error(error);
+                        });
+                }
+
+                function displaySetInfo(container, setInfo) {
+
+                    const releaseDate = new Date(setInfo.releaseDate);
+                    const formattedReleaseDate = `${releaseDate.getMonth() + 1}/${releaseDate.getDate()}/${releaseDate.getFullYear()}`;
+
+                    const setInfoElement = document.createElement('div');
+                    setInfoElement.setAttribute('class', 'set-details');
+                    setInfoElement.innerHTML = `
+                        <p class="set-name reverse h1">${setInfo.name}</p>    
+                        <img src=${setInfo.images.symbol} >
+                        <p class="reverse"><span class="fa fa-layer-group"></span>Total Cards: <strong>${setInfo.total}</strong> (${setInfo.printedTotal})</p>
+                        <p class="reverse mt-2"><span class="fa fa-calendar"></span>Release Date: <strong>${formattedReleaseDate}</strong></p>
+                    `;
+                    container.appendChild(setInfoElement);
+                }
+
+                fetchAndDisplaySetInfo();
+
+                function displaySetCards(container, cards) {
+
+                    cards.forEach(card => {
+                        const cardElement = document.createElement('div');
+                        cardElement.setAttribute('class', 'col-3');
+                        cardElement.innerHTML = `<div class="card"><img src="${card.images.small}" alt="${card.name}"></div>`;
+                        container.appendChild(cardElement);
+                    });
+                }
+
+                fetchAndDisplaySetCards();
+
+            </script>
+        </main>
+    </body>
+</html>

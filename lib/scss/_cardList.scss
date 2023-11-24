@@ -1,0 +1,49 @@
+@import "variables";
+@import "mixins";
+
+.card-list{
+    background-color: $black;
+    border: 1px solid $pink;
+    border-radius: 4px;
+    padding: 16px;
+    .set-details{
+        svg{
+            margin: 0 8px 0 0;
+            width: 16px;
+        }
+    }
+    .card-container{
+        .card{
+            background: $blueGray;
+            border-radius: 12px 12px 8px 8px;
+            box-sizing: border-box;
+        }
+        .card-info{
+            font-size: 14px;
+            letter-spacing: .75px;
+            padding: 8px 12px;
+            .card-details{
+                p{
+                    margin-bottom: 8px;
+                    &:last-child{
+                        margin-bottom: 0;
+                    }
+                }
+                .card-name{
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    white-space: nowrap;
+                }
+                .card-number{
+                    color: $pink;
+                    font-size: 12px;
+                }
+            }
+            .pricing{
+                .card-price{
+                    color: $green;
+                }
+            }
+        }
+    }
+}

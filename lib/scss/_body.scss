@@ -1,0 +1,11 @@
+@import "variables";
+@import "mixins";
+
+body{
+    background: $black top center/35% repeat url("/lib/imgs/bgPattern.png");
+}
+.set-title{
+    border-bottom: 2px solid $blue;
+    margin-bottom: 8px;
+    padding: 8px 0;
+}
