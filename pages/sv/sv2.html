@@ -203,10 +203,10 @@
                     const setInfoElement = document.createElement('div');
                     setInfoElement.setAttribute('class', 'set-details');
                     setInfoElement.innerHTML = `
-                        <p class="set-name reverse h1">${setInfo.name}</p>    
+                        <p class="set-name h1">${setInfo.name}</p>    
                         <img src=${setInfo.images.symbol} >
-                        <p class="reverse"><span class="fa fa-layer-group"></span>Total Cards: <strong>${setInfo.total}</strong> (${setInfo.printedTotal})</p>
-                        <p class="reverse mt-2"><span class="fa fa-calendar"></span>Release Date: <strong>${formattedReleaseDate}</strong></p>
+                        <p><span class="fa fa-layer-group"></span>Total Cards: <strong>${setInfo.total}</strong> (${setInfo.printedTotal})</p>
+                        <p class="mt-2"><span class="fa fa-calendar"></span>Release Date: <strong>${formattedReleaseDate}</strong></p>
                     `;
                     container.appendChild(setInfoElement);
                 }
@@ -216,15 +216,34 @@
                 function displaySetCards(container, cards) {
 
                     cards.forEach(card => {
+                        const cardRarities = ['Rare', 'Uncommon', 'Common'];
+                        const baseCardRarity = cardRarities.includes(card.rarity);
+
+                        const originalNumber = card.number;
+                        const formattedNumber = originalNumber.toString().padStart(3, '0');
+
                         const cardElement = document.createElement('div');
-                        cardElement.setAttribute('class', 'col-3');
-                        cardElement.innerHTML = `<div class="card"><img src="${card.images.small}" alt="${card.name}"></div>`;
+                        cardElement.setAttribute('class', `col-3 ${card.name} card-container mb-4`);
+                        cardElement.innerHTML = `
+                            <div class="card">
+                                <img src="${card.images.small}" alt="${card.name}" loading="lazy">
+                            
+                                <div class="container">
+                                    <div class="row card-info">
+                                        <div class="col-9 text-start p-0 card-details">
+                                            <p class="card-name">${card.name}</p>
+                                            <p class="card-number">#${formattedNumber}</p>
+                                        </div>
+                                        <div class="col-3 text-end align-items-end p-0 pricing">
+                                            <p class="card-price">$${card.cardmarket.prices.averageSellPrice}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>`;
                         container.appendChild(cardElement);
                     });
                 }
-
                 fetchAndDisplaySetCards();
-
             </script>
         </main>
     </body>
