@@ -17,6 +17,12 @@
             background: $blueGray;
             border-radius: 12px 12px 8px 8px;
             box-sizing: border-box;
+            img[type='button']{
+                background-color: transparent;
+                border: none;
+                outline: none;
+                padding: 0;
+            }
         }
         .card-info{
             font-size: 14px;

@@ -1,0 +1,37 @@
+@import "variables";
+@import "mixins";
+
+[class^="modalContainer-"]{
+    .modal-dialog{
+        .modal-content{
+            background-color: $blueGray;
+            border: 1px solid $blue;
+            .modal-header{
+                border-bottom: 1px solid $pink;
+                padding: 0;
+            }
+            .modal-body{
+                img{
+                    width: 100%;
+                }
+                .btn-close{
+                    background-image: none;
+                    height: auto;
+                    margin: 0;
+                    opacity: 1;
+                    width: auto;
+
+                    &:before{
+                        color: $blue;
+                        content: '\f00d';
+                        font-family: "Font Awesome 5 Free"; 
+                        font-size: 40px;
+                        font-weight: 900; 
+                        line-height: 1.2;
+                        transform-origin: center;
+                    }
+                }
+            }
+        }
+    }
+}

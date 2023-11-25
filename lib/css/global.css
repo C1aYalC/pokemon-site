@@ -107,13 +107,59 @@ p.reverse, span.reverse {
 }
 
 body {
-  background: #222222 top center/35% repeat url("../../lib/imgs/bgPattern.png");
+  background: #222222 top center repeat url("../../lib/imgs/bgPattern.png");
+}
+@media (min-width: 0) {
+  body {
+    background-size: 60%;
+  }
+}
+@media (min-width: 1201px) {
+  body {
+    background-size: 40%;
+  }
+}
+@media (max-width: 750px) {
+  body {
+    background-size: 95%;
+  }
+}
+body.modal-open {
+  padding-right: 0 !important;
 }
 
 .set-title {
   border-bottom: 2px solid #78bbf6;
   margin-bottom: 8px;
   padding: 8px 0;
+}
+
+[class^=modalContainer-] .modal-dialog .modal-content {
+  background-color: #282f3d;
+  border: 1px solid #78bbf6;
+}
+[class^=modalContainer-] .modal-dialog .modal-content .modal-header {
+  border-bottom: 1px solid #de78ab;
+  padding: 0;
+}
+[class^=modalContainer-] .modal-dialog .modal-content .modal-body img {
+  width: 100%;
+}
+[class^=modalContainer-] .modal-dialog .modal-content .modal-body .btn-close {
+  background-image: none;
+  height: auto;
+  margin: 0;
+  opacity: 1;
+  width: auto;
+}
+[class^=modalContainer-] .modal-dialog .modal-content .modal-body .btn-close:before {
+  color: #78bbf6;
+  content: "\f00d";
+  font-family: "Font Awesome 5 Free";
+  font-size: 40px;
+  font-weight: 900;
+  line-height: 1.2;
+  transform-origin: center;
 }
 
 .card {
@@ -124,8 +170,14 @@ body {
 .card.set-card {
   border: 1px solid #de78ab;
   border-radius: 16px;
-  padding: 16px;
+  padding: 8px;
   transition: all 0.15s;
+}
+@media (max-width: 1199px) {
+  .card.set-card {
+    border-radius: 8px;
+    padding: 4px;
+  }
 }
 .card.set-card a {
   display: inline-block;
@@ -160,6 +212,12 @@ body {
   background: #282f3d;
   border-radius: 12px 12px 8px 8px;
   box-sizing: border-box;
+}
+.card-list .card-container .card img[type=button] {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  padding: 0;
 }
 .card-list .card-container .card-info {
   font-size: 14px;

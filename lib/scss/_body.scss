@@ -2,7 +2,19 @@
 @import "mixins";
 
 body{
-    background: $black top center/35% repeat url("../../lib/imgs/bgPattern.png");
+    background: $black top center repeat url("../../lib/imgs/bgPattern.png");
+    @include mobileAndAbove{
+        background-size: 60%;
+    }
+    @include desktopAndAbove{
+        background-size: 40%;
+    }
+    @include mobileAndBelow{
+        background-size: 95%;
+    }
+    &.modal-open{
+        padding-right: 0!important;
+    }
 }
 .set-title{
     border-bottom: 2px solid $blue;

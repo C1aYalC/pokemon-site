@@ -9,8 +9,13 @@
     &.set-card{
         border: 1px solid $pink;
         border-radius: 16px;
-        padding: 16px;
+        padding: 8px;
         transition: all .15s;
+
+        @include tabletAndBelow{
+            border-radius: 8px;
+            padding: 4px;
+        }
 
         a{
             display: inline-block;
