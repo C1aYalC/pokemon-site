@@ -135,31 +135,23 @@ body.modal-open {
 }
 
 [class^=modalContainer-] .modal-dialog .modal-content {
-  background-color: #282f3d;
+  background-color: #222222;
   border: 1px solid #78bbf6;
+  border-radius: 16px;
+  box-shadow: 0 0 20px #000000;
 }
 [class^=modalContainer-] .modal-dialog .modal-content .modal-header {
-  border-bottom: 1px solid #de78ab;
-  padding: 0;
+  border-bottom: none;
+}
+[class^=modalContainer-] .modal-dialog .modal-content .modal-header .modal-close {
+  color: #f6f6f6;
+  font-size: 24px;
 }
 [class^=modalContainer-] .modal-dialog .modal-content .modal-body img {
   width: 100%;
 }
-[class^=modalContainer-] .modal-dialog .modal-content .modal-body .btn-close {
-  background-image: none;
-  height: auto;
-  margin: 0;
-  opacity: 1;
-  width: auto;
-}
-[class^=modalContainer-] .modal-dialog .modal-content .modal-body .btn-close:before {
-  color: #78bbf6;
-  content: "\f00d";
-  font-family: "Font Awesome 5 Free";
-  font-size: 40px;
-  font-weight: 900;
-  line-height: 1.2;
-  transform-origin: center;
+[class^=modalContainer-] .modal-dialog .modal-content .modal-body p {
+  padding: 0;
 }
 
 .card {

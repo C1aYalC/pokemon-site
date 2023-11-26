@@ -28,15 +28,17 @@
                                 <img class="img-fluid" src="../../lib/imgs/set-logos/SV.png">
                             </div>
                             <div class="col-12 col-sm-5 align-self-center">
-                                <div id="setInfo"></div>
+                                <div id="setInfo">
+                                    <!-- Auto Populated -->
+                                </div>
                             </div>
                         </div>
                         <div class="row g-3" id="setCards">
-                    
+                            <!-- Auto Populated -->
                         </div>
                     </div>
                 </div>
-                <div class="col-3 d-none d-sm-block">
+                <div class="col-3 d-none">
                     <div class="contatiner">
                         <div class="side-bar-nav mb-3">
                             <div class="accordion" id="sideNavAccordion">
@@ -231,7 +233,7 @@
                         const cardImgHiResUrl = `${cardImgUrl}/${cardSetId}/${originalNumber}_hires.png`;
 
                         const cardElement = document.createElement('div');
-                        cardElement.setAttribute('class', `col-6 col-md-3 ${card.name} card-container mb-4`);
+                        cardElement.setAttribute('class', `col-4 col-md-2 ${card.name} card-container mb-4`);
                         cardElement.innerHTML = `
                             <div class="card">
                                 <img src="${card.images.small}" type="button" class="btn btn-primary" alt="${card.name}" data-bs-toggle="modal" data-bs-target="#${cardId}Modal" loading="lazy">
@@ -259,19 +261,30 @@
                         modalElement.innerHTML = `
                                 <div class="modal-dialog modal-xl">
                                     <div class="modal-content">
+                                        <div class="modal-header pb-0">
+                                            <div class="modal-close container d-flex justify-content-end" data-bs-dismiss="modal" aria-label="Close">
+                                                <span type="button" class="fa fa-xmark"></span>  
+                                            </div>
+                                        </div>
                                         <div class="modal-body">
                                             <div class="container">
                                                 <div class="row">
-                                                    <div class="col-6">
+                                                    <div class="col-5">
                                                         <img src="${card.images.large}" alt="${card.name}" loading="lazy">
                                                     </div>
-                                                    <div class="col-6">
-                                                        <div class="row modal-header align-items-center">
-                                                            <div class="col-10">
-                                                                <h1 class="modal-title fs-2" id="${formatedCardName}ModalLabel">${card.name}</h1>
-                                                            </div>
-                                                            <div class="col-2 d-flex justify-content-end">
-                                                                <span type="button" class="btn btn-close" data-bs-dismiss="modal" aria-label="Close"></span>
+                                                    <div class="col-7">
+                                                        <div class="row">
+                                                            <div class="container">
+                                                                <div class="row">
+                                                                    <div class="col-6">
+                                                                        <p class="h1 modal-title fs-2" id="${formatedCardName}ModalLabel">${card.name}</p>
+                                                                    </div>
+                                                                    <div class="col-6 container d-flex justify-content-end">
+                                                                        <p class="h5">${card.hp}HP</p>
+                                                                    </div>
+                                                                </div>
+                                                                <p class="modal-card-number">#${formattedNumber}</p>
+                                                                <p class="modal-card-artist"><span class="fa fa-palette pe-2"></span>${card.artist}</p>
                                                             </div>
                                                         </div>
                                                     </div>

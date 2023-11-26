@@ -4,32 +4,23 @@
 [class^="modalContainer-"]{
     .modal-dialog{
         .modal-content{
-            background-color: $blueGray;
+            background-color: $black;
             border: 1px solid $blue;
+            border-radius: 16px;
+            box-shadow: 0 0 20px #000000;
             .modal-header{
-                border-bottom: 1px solid $pink;
-                padding: 0;
+                border-bottom: none;
+                .modal-close{
+                    color: $white;
+                    font-size: 24px;
+                }
             }
             .modal-body{
                 img{
                     width: 100%;
                 }
-                .btn-close{
-                    background-image: none;
-                    height: auto;
-                    margin: 0;
-                    opacity: 1;
-                    width: auto;
-
-                    &:before{
-                        color: $blue;
-                        content: '\f00d';
-                        font-family: "Font Awesome 5 Free"; 
-                        font-size: 40px;
-                        font-weight: 900; 
-                        line-height: 1.2;
-                        transform-origin: center;
-                    }
+                p{
+                    padding: 0;
                 }
             }
         }
