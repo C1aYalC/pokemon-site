@@ -94,12 +94,14 @@ p.reverse, span.reverse {
     position: relative;
   }
 }
-.header.sticky {
-  box-shadow: 0 10px 10px #000000;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 100;
+@media (max-width: 1199px) {
+  .header.sticky {
+    box-shadow: 0 10px 10px #000000;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+  }
 }
 
 body {
@@ -202,7 +204,7 @@ body.modal-open {
 }
 
 .card-details {
-  padding: 8px;
+  padding: 8px 4px;
 }
 
 .card-list {
@@ -212,9 +214,8 @@ body.modal-open {
   padding: 16px;
 }
 .card-list .card-container .card {
-  background: #282f3d;
-  border-radius: 12px 12px 8px 8px;
-  box-sizing: border-box;
+  background: transparent;
+  padding: 8px;
 }
 .card-list .card-container .card img[type=button] {
   background-color: transparent;
@@ -242,6 +243,7 @@ body.modal-open {
   margin-bottom: 0;
 }
 .card-list .card-container .card-info .card-name {
+  font-size: 18px;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;

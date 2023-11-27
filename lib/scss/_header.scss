@@ -27,13 +27,14 @@
             position: relative;
         }
     }
-
-    &.sticky{
-        box-shadow: 0 10px 10px $pureBlack;
-        position: fixed;
-        top: 0;
-        width: 100%;
-        z-index: 100;
+    @include tabletAndBelow{
+        &.sticky{
+            box-shadow: 0 10px 10px $pureBlack;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+        }
     }
 
 }

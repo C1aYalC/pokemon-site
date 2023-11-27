@@ -19,7 +19,7 @@
 }
 
 .card-details{
-    padding: 8px;
+    padding: 8px 4px;
 }
 .card-list{
     background-color: $black;
@@ -28,9 +28,8 @@
     padding: 16px;
     .card-container{
         .card{
-            background: $blueGray;
-            border-radius: 12px 12px 8px 8px;
-            box-sizing: border-box;
+            background: transparent;
+            padding: 8px;
             img[type='button']{
                 background-color: transparent;
                 border: none;
@@ -55,6 +54,7 @@
                 }
             }
             .card-name{
+                font-size: 18px;
                 text-overflow: ellipsis;
                 overflow: hidden;
                 white-space: nowrap;
