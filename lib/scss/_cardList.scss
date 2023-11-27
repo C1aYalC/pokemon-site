@@ -1,17 +1,31 @@
 @import "variables";
 @import "mixins";
 
-.card-list{
-    background-color: $black;
-    border: 1px solid $pink;
-    border-radius: 4px;
-    padding: 16px;
+.set-info{
+    background: $white;
+    background: linear-gradient(0deg, rgba(170,170,170,1) 0%, rgba(246,246,246,1) 50%);
+    border:1px solid $green;
+    border-radius: 8px;
+    padding: 8px 0;
     .set-details{
+        p{
+            color: $black;
+        }
         svg{
             margin: 0 8px 0 0;
             width: 16px;
         }
     }
+}
+
+.card-details{
+    padding: 8px;
+}
+.card-list{
+    background-color: $black;
+    border: 1px solid $pink;
+    border-radius: 8px;
+    padding: 16px;
     .card-container{
         .card{
             background: $blueGray;
@@ -27,28 +41,37 @@
         .card-info{
             font-size: 14px;
             letter-spacing: .75px;
-            padding: 8px 12px;
-            .card-details{
-                p{
-                    margin-bottom: 8px;
-                    &:last-child{
-                        margin-bottom: 0;
-                    }
-                }
-                .card-name{
-                    text-overflow: ellipsis;
-                    overflow: hidden;
-                    white-space: nowrap;
-                }
-                .card-number{
-                    color: $pink;
-                    font-size: 12px;
+            padding-bottom: 8px;
+            &:last-child{
+                padding-bottom: 0;
+            }
+            @include tabletAndBelow{
+                padding-bottom: 0;
+            }
+            p{
+                margin-bottom: 8px;
+                &:last-child{
+                    margin-bottom: 0;
                 }
             }
-            .pricing{
-                .card-price{
-                    color: $green;
-                }
+            .card-name{
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
+            }
+            .card-number{
+                @include notoSemiBold();
+                color: $pink;
+                font-size: 12px;
+            }
+            .card-price{
+                @include notoSemiBold();
+                color: $green;
+            }
+            .card-rarity{
+                @include notoSemiBold();
+                color: $blue;
+                font-size: 12px;                
             }
         }
     }

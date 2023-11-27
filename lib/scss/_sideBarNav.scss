@@ -23,7 +23,7 @@
         padding: 12px;
         text-transform: uppercase;
         width: 100%;
-        @include GeoUltra();
+        @include notoBlack();
 
         &:after{
             background-image: none;
@@ -57,7 +57,7 @@
         padding: 8px;
 
         li{
-            @include GeoReg();
+            @include notoBlack();
             letter-spacing: .5px;
 
             &:last-child{

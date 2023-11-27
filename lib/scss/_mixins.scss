@@ -63,11 +63,19 @@
     }
 }
 
-@mixin GeoUltra{
-  font-family: 'Geomanist';
-  font-weight: 900;
+@mixin notoBlack{
+    font-family: $noto;
+    font-weight: 900;
 }
-@mixin GeoReg{
-  font-family: 'Geomanist';
-  font-weight: 400;
+@mixin notoSemiBold{
+    font-family: $noto;
+    font-weight: 600;
+  }
+@mixin notoReg{
+    font-family: $noto;
+    font-weight: 400;
+}
+@mixin notoLight{
+    font-family: $noto;
+    font-weight: 300;
 }

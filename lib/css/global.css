@@ -46,18 +46,6 @@ input {
   border-radius: 0;
 }
 
-@font-face {
-  font-family: "Geomanist";
-  font-style: normal;
-  font-weight: 700;
-  src: url("../fonts/GEOMANIST-ULTRA.OTF") format("OTF");
-}
-@font-face {
-  font-family: "Geomanist-Reg";
-  font-style: normal;
-  font-weight: 100;
-  src: url("../fonts/GEOMANIST-REGULAR.OTF") format("OTF");
-}
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
   color: #f6f6f6;
@@ -65,14 +53,15 @@ h1, h2, h3, h4, h5, h6,
   margin: 0;
   padding: 0;
   text-transform: uppercase;
-  font-family: "Geomanist";
+  font-family: "Noto Sans", "Arial", sans-serif;
   font-weight: 900;
 }
 
 p, span {
   color: #f6f6f6;
+  letter-spacing: normal;
   line-height: 1.2;
-  font-family: "Geomanist";
+  font-family: "Noto Sans", "Arial", sans-serif;
   font-weight: 400;
 }
 p.reverse, span.reverse {
@@ -103,6 +92,15 @@ p.reverse, span.reverse {
     display: block;
     margin: 0 auto;
     position: relative;
+  }
+}
+@media (max-width: 1199px) {
+  .header {
+    box-shadow: 0 10px 10px #000000;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
   }
 }
 
@@ -183,22 +181,37 @@ body.modal-open {
   background-color: #77dd77;
   color: #222222;
   font-size: 14px;
-  font-family: "Geomanist";
+  font-family: "Noto Sans", "Arial", sans-serif;
   font-weight: 900;
 }
 .card.set-card:hover {
   transform: scale(1.05);
 }
 
+.set-info {
+  background: #f6f6f6;
+  background: linear-gradient(0deg, rgb(170, 170, 170) 0%, rgb(246, 246, 246) 50%);
+  border: 1px solid #77dd77;
+  border-radius: 8px;
+  padding: 8px 0;
+}
+.set-info .set-details p {
+  color: #222222;
+}
+.set-info .set-details svg {
+  margin: 0 8px 0 0;
+  width: 16px;
+}
+
+.card-details {
+  padding: 8px;
+}
+
 .card-list {
   background-color: #222222;
   border: 1px solid #de78ab;
-  border-radius: 4px;
+  border-radius: 8px;
   padding: 16px;
-}
-.card-list .set-details svg {
-  margin: 0 8px 0 0;
-  width: 16px;
 }
 .card-list .card-container .card {
   background: #282f3d;
@@ -214,25 +227,43 @@ body.modal-open {
 .card-list .card-container .card-info {
   font-size: 14px;
   letter-spacing: 0.75px;
-  padding: 8px 12px;
+  padding-bottom: 8px;
 }
-.card-list .card-container .card-info .card-details p {
+.card-list .card-container .card-info:last-child {
+  padding-bottom: 0;
+}
+@media (max-width: 1199px) {
+  .card-list .card-container .card-info {
+    padding-bottom: 0;
+  }
+}
+.card-list .card-container .card-info p {
   margin-bottom: 8px;
 }
-.card-list .card-container .card-info .card-details p:last-child {
+.card-list .card-container .card-info p:last-child {
   margin-bottom: 0;
 }
-.card-list .card-container .card-info .card-details .card-name {
+.card-list .card-container .card-info .card-name {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
 }
-.card-list .card-container .card-info .card-details .card-number {
+.card-list .card-container .card-info .card-number {
+  font-family: "Noto Sans", "Arial", sans-serif;
+  font-weight: 600;
   color: #de78ab;
   font-size: 12px;
 }
-.card-list .card-container .card-info .pricing .card-price {
+.card-list .card-container .card-info .card-price {
+  font-family: "Noto Sans", "Arial", sans-serif;
+  font-weight: 600;
   color: #77dd77;
+}
+.card-list .card-container .card-info .card-rarity {
+  font-family: "Noto Sans", "Arial", sans-serif;
+  font-weight: 600;
+  color: #78bbf6;
+  font-size: 12px;
 }
 
 .side-bar-nav .accordion .accordion-item {
@@ -254,7 +285,7 @@ body.modal-open {
   padding: 12px;
   text-transform: uppercase;
   width: 100%;
-  font-family: "Geomanist";
+  font-family: "Noto Sans", "Arial", sans-serif;
   font-weight: 900;
 }
 .side-bar-nav .accordion-button:after {
@@ -285,8 +316,8 @@ body.modal-open {
   padding: 8px;
 }
 .side-bar-nav .accordion-body li {
-  font-family: "Geomanist";
-  font-weight: 400;
+  font-family: "Noto Sans", "Arial", sans-serif;
+  font-weight: 900;
   letter-spacing: 0.5px;
 }
 .side-bar-nav .accordion-body li:last-child {
