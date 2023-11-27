@@ -19,7 +19,7 @@
         <link href="../../lib/css/global.css" rel="stylesheet">
     </head>
     <body>
-        <header class="header">
+        <header class="header" id="mainHeader">
             <div class="container">
                 <a href="../../index.html">
                     <img src="../../lib/imgs/c1-pokeball-logo.svg" alt="C1 Logo">
@@ -38,7 +38,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col card-list">
+                <div class="col card-list" id="cardList">
                     <div class="container gx-1">
                         <div class="row g-3" id="setCards">
                             <!-- Auto Populated -->
@@ -308,6 +308,19 @@
                     });
                 }
                 fetchAndDisplaySetCards();
+
+                window.addEventListener('scroll', function() {
+                    var header = document.getElementById('mainHeader');
+                    var targetDiv = document.getElementById('cardList');
+
+                    var targetDivTop = targetDiv.getBoundingClientRect().top;
+
+                    if (targetDivTop <= 0) {
+                        header.classList.add('sticky');
+                    } else {
+                        header.classList.remove('sticky');
+                    }
+                });
             </script>
         </main>
     </body>

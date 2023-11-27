@@ -28,7 +28,7 @@
         }
     }
 
-    @include tabletAndBelow{
+    &.sticky{
         box-shadow: 0 10px 10px $pureBlack;
         position: fixed;
         top: 0;
