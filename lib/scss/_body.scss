@@ -16,6 +16,13 @@ body{
         padding-right: 0!important;
     }
 }
+#loading{
+    img{
+        @include tabletAndBelow{
+            width: 100%;
+        }
+    }
+}
 .set-title{
     border-bottom: 2px solid $blue;
     margin-bottom: 8px;

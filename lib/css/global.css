@@ -60,7 +60,7 @@ h1, h2, h3, h4, h5, h6,
 p, span {
   color: #f6f6f6;
   letter-spacing: normal;
-  line-height: 1.2;
+  line-height: 1 !important;
   font-family: "Noto Sans", "Arial", sans-serif;
   font-weight: 400;
 }
@@ -126,6 +126,12 @@ body.modal-open {
   padding-right: 0 !important;
 }
 
+@media (max-width: 1199px) {
+  #loading img {
+    width: 100%;
+  }
+}
+
 .set-title {
   border-bottom: 2px solid #78bbf6;
   margin-bottom: 8px;
@@ -145,11 +151,33 @@ body.modal-open {
   color: #f6f6f6;
   font-size: 24px;
 }
-[class^=modalContainer-] .modal-dialog .modal-content .modal-body img {
-  width: 100%;
-}
 [class^=modalContainer-] .modal-dialog .modal-content .modal-body p {
   padding: 0;
+}
+[class^=modalContainer-] .modal-dialog .modal-content .modal-body .modal-title {
+  color: #78bbf6;
+  font-size: 42px;
+  text-transform: uppercase;
+  font-family: "Noto Sans", "Arial", sans-serif;
+  font-weight: 900;
+}
+[class^=modalContainer-] .modal-dialog .modal-content .modal-body .modal-card-number {
+  color: #de78ab;
+  font-size: 16px;
+  font-family: "Noto Sans", "Arial", sans-serif;
+  font-weight: 400;
+}
+[class^=modalContainer-] .modal-dialog .modal-content .modal-body .modal-card-number img {
+  margin-right: 16px;
+}
+[class^=modalContainer-] .modal-dialog .modal-content .modal-body .modal-card-artist {
+  font-family: "Noto Sans", "Arial", sans-serif;
+  font-weight: 300;
+}
+[class^=modalContainer-] .modal-dialog .modal-content .modal-body .modal-card-artist span {
+  font-family: "Noto Sans", "Arial", sans-serif;
+  font-weight: 600;
+  margin-left: 8px;
 }
 
 .card {
@@ -191,7 +219,6 @@ body.modal-open {
 .set-info {
   background: #f6f6f6;
   background: linear-gradient(0deg, rgb(170, 170, 170) 0%, rgb(246, 246, 246) 50%);
-  border: 1px solid #77dd77;
   border-radius: 8px;
   padding: 8px 0;
 }
@@ -208,14 +235,19 @@ body.modal-open {
 }
 
 .card-list {
-  background-color: #222222;
-  border: 1px solid #de78ab;
+  background-color: #282f3d;
+  border: 1px solid #78bbf6;
   border-radius: 8px;
   padding: 16px;
 }
 .card-list .card-container .card {
   background: transparent;
-  padding: 8px;
+  padding: 4px;
+}
+@media (max-width: 1199px) {
+  .card-list .card-container .card {
+    padding: 0;
+  }
 }
 .card-list .card-container .card img[type=button] {
   background-color: transparent;
@@ -226,7 +258,7 @@ body.modal-open {
 .card-list .card-container .card-info {
   font-size: 14px;
   letter-spacing: 0.75px;
-  padding-bottom: 8px;
+  padding-bottom: 4px;
 }
 .card-list .card-container .card-info:last-child {
   padding-bottom: 0;
@@ -243,10 +275,15 @@ body.modal-open {
   margin-bottom: 0;
 }
 .card-list .card-container .card-info .card-name {
-  font-size: 18px;
-  text-overflow: ellipsis;
+  font-size: 16px;
   overflow: hidden;
+  text-overflow: ellipsis;
   white-space: nowrap;
+}
+@media (max-width: 1199px) {
+  .card-list .card-container .card-info .card-name {
+    font-size: 14px;
+  }
 }
 .card-list .card-container .card-info .card-number {
   font-family: "Noto Sans", "Arial", sans-serif;

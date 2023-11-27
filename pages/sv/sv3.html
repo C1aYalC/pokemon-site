@@ -8,8 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-capable" content="yes">
-        <link rel="apple-touch-icon" sizes="196x196" href="lib/imgs/icon.png">
-        <link rel="shortcut icon" sizes="196x196" href="lib/imgs/icon.png">
+        <link rel="shortcut icon" sizes="196x196" href="../../lib/imgs/icon.png">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -42,7 +41,7 @@
                     <div class="container gx-1">
                         <div class="row">
                             <div id="loading">
-                                <img class="d-block mx-auto" width="100%" src="../../lib/imgs/loading.png" alt="Your Cards are Loading">
+                                <img class="d-block mx-auto" width="600" src="../../lib/imgs/loading.png" alt="Your Cards are Loading">
                             </div>
                         </div>
                         <div class="row g-3" id="setCards">
@@ -152,8 +151,44 @@
             <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
             <script>
                 const apiKey = 'fafa67e0-50c7-4e86-a4ad-4b936b9b85e4';
-                const apiUrl = 'https://api.pokemontcg.io/v2/cards';
+                const apiUrlCards = 'https://api.pokemontcg.io/v2/cards';
                 const setCodes = ['sv3'];
+                const apiUrlSets = `https://api.pokemontcg.io/v2/sets/${setCodes}`;
+
+                function fetchAndDisplaySetInfo() {
+                    const setInfoContainer = document.getElementById('setInfo');
+
+                    axios.get(apiUrlSets, {
+                            headers: {
+                                'X-Api-Key': apiKey,
+                            },
+                        })
+                        .then(response => {
+                            const setInfo = response.data.data;
+                            displaySetInfo(setInfoContainer, setInfo);
+                        })
+                        .catch(error => {
+                            console.error(error);
+                        });
+                }
+
+                function displaySetInfo(container, setInfo) {
+
+                    const releaseDate = new Date(setInfo.releaseDate);
+                    const formattedReleaseDate = `${releaseDate.getMonth() + 1}/${releaseDate.getDate()}/${releaseDate.getFullYear()}`;
+
+                    const setInfoElement = document.createElement('div');
+                    setInfoElement.setAttribute('class', 'set-details');
+                    setInfoElement.innerHTML = `
+                        <p class="set-name h1">${setInfo.name}</p>    
+                        <img src=${setInfo.images.symbol} alt="${setInfo.name} Set Symbol">
+                        <p><span class="fa fa-layer-group"></span>Total Cards: <strong>${setInfo.total}</strong> (${setInfo.printedTotal})</p>
+                        <p class="mt-2"><span class="fa fa-calendar"></span>Release Date: <strong>${formattedReleaseDate}</strong></p>
+                    `;
+                    container.appendChild(setInfoElement);
+                }
+
+                fetchAndDisplaySetInfo();
 
                 function fetchAndDisplaySetCards() {
                     const setCardsContainer = document.getElementById('setCards');
@@ -164,7 +199,7 @@
                         let currentPage = 1;
 
                         const fetchAllPages = () => {
-                            const setApiUrl = `${apiUrl}?q=set.id:${setCode}&page=${currentPage}&orderBy=number`;
+                            const setApiUrl = `${apiUrlCards}?q=set.id:${setCode}&page=${currentPage}&orderBy=number`;
 
                             axios.get(setApiUrl, {
                                     headers: {
@@ -191,44 +226,7 @@
                     });
                 }
 
-                function fetchAndDisplaySetInfo() {
-                    const apiUrlSets = `https://api.pokemontcg.io/v2/sets/${setCodes}`;
-                    const setInfoContainer = document.getElementById('setInfo');
-
-                    axios.get(apiUrlSets, {
-                            headers: {
-                                'X-Api-Key': apiKey,
-                            },
-                        })
-                        .then(response => {
-                            const setInfo = response.data.data;
-                            displaySetInfo(setInfoContainer, setInfo);
-                        })
-                        .catch(error => {
-                            console.error(error);
-                        });
-                }
-
-                function displaySetInfo(container, setInfo) {
-
-                    const releaseDate = new Date(setInfo.releaseDate);
-                    const formattedReleaseDate = `${releaseDate.getMonth() + 1}/${releaseDate.getDate()}/${releaseDate.getFullYear()}`;
-
-                    const setInfoElement = document.createElement('div');
-                    setInfoElement.setAttribute('class', 'set-details');
-                    setInfoElement.innerHTML = `
-                        <p class="set-name h1">${setInfo.name}</p>    
-                        <img src=${setInfo.images.symbol} >
-                        <p><span class="fa fa-layer-group"></span>Total Cards: <strong>${setInfo.total}</strong> (${setInfo.printedTotal})</p>
-                        <p class="mt-2"><span class="fa fa-calendar"></span>Release Date: <strong>${formattedReleaseDate}</strong></p>
-                    `;
-                    container.appendChild(setInfoElement);
-                }
-
-                fetchAndDisplaySetInfo();
-
                 function displaySetCards(container, cards) {
-
                     cards.forEach(card => {
                         const cardRarities = ['Rare', 'Uncommon', 'Common'];
                         const baseCardRarity = cardRarities.includes(card.rarity);
@@ -245,7 +243,7 @@
                         const cardImgHiResUrl = `${cardImgUrl}/${cardSetId}/${originalNumber}_hires.png`;
 
                         const cardElement = document.createElement('div');
-                        cardElement.setAttribute('class', `col-4 col-md-3 ${card.name} card-container mb-4`);
+                        cardElement.setAttribute('class', `col-4 col-md-2 ${card.name} card-container`);
                         cardElement.innerHTML = `
                             <div class="card">
                                 <img src="${card.images.small}" type="button" class="btn btn-primary" alt="${card.name}" data-bs-toggle="modal" data-bs-target="#${cardId}Modal" loading="lazy">
@@ -291,17 +289,30 @@
                                             <div class="container">
                                                 <div class="row">
                                                     <div class="col-12 col-md-5">
-                                                        <img src="${card.images.large}" alt="${card.name}" loading="lazy">
+                                                        <img src="${card.images.large}" alt="${card.name}" loading="lazy" width="100%">
                                                     </div>
                                                     <div class="col-12 col-md-7">
                                                         <div class="container">
                                                             <div class="row">
-                                                                <div class="col-6">
-                                                                    <p class="h1 modal-title fs-2" id="${formatedCardName}ModalLabel">${card.name}</p>
+                                                                <div class="col">
+                                                                    <p class="card-name modal-title d-flex align-items-center" id="${formatedCardName}ModalLabel">${card.name}</p>
                                                                 </div>
                                                             </div>
-                                                            <p class="modal-card-number">#${formattedNumber}</p>
-                                                            <p class="modal-card-artist"><span class="fa fa-palette pe-2"></span>${card.artist}</p>
+                                                            <div class="row">
+                                                                <div class="col">
+                                                                    <p class="modal-card-number d-flex align-items-center">
+                                                                        <img src=${card.set.images.symbol} alt="${card.set.name} Set Symbol">
+                                                                        #${formattedNumber}/${card.set.printedTotal}
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col">
+                                                                    <p class="modal-card-artist"><span class="fa fa-paintbrush"></span>
+                                                                        Artist:<span class="artist-name">${card.artist}</span>
+                                                                    </p>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -311,7 +322,7 @@
                                 </div>`;
                         container.appendChild(modalElement);
                     });
-                }
+                    }
                 fetchAndDisplaySetCards();
 
                 setTimeout(function() {
@@ -323,7 +334,7 @@
                     var targetDiv = document.getElementById('cardList');
 
                     var targetDivTop = targetDiv.getBoundingClientRect().top;
-
+                    
                     if (window.innerWidth <= 767){
                         if (targetDivTop <= 0) {
                             header.classList.add('sticky');
