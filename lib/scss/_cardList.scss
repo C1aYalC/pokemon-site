@@ -16,6 +16,21 @@
         }
     }
 }
+.set-progress{
+    background-color: $black;
+    background: linear-gradient(0deg, rgba(34,34,34,1) 0%, rgba(51,51,51,1) 100%);
+    border: 1px solid $pink;
+    border-radius: 8px;
+    padding: 8px;
+    .progress{
+        border-radius: 4px;
+        height: 8px;
+        .progress-bar{
+            background-color: $green;
+        background: linear-gradient(0deg, rgba(119,221,119,1) 40%, rgba(151,255,151,1) 60%);
+        }
+    }
+}
 
 .card-details{
     padding: 8px 4px;
@@ -37,6 +52,35 @@
                 border: none;
                 outline: none;
                 padding: 0;
+            }
+            .card-check{
+                position: absolute;
+                top: 0;
+                right: 0;
+                padding: 4px 8px;
+                input{
+                    background: transparentize($black, 0.25);;
+                    background-image: none;
+                    border: 1px solid $white;
+                    padding: 12px;
+                    outline: none;
+                    &:checked{
+                        background-color: $blue;
+                        border-color: $black;
+                        &::after{
+                            font-family: "Font Awesome 5 Free"; 
+                            font-weight: 900;
+                            color: $black; 
+                            content: "\f00c";
+                            position: relative;
+                            left: -8px;
+                            bottom: 8px;
+                        }
+                    }
+                    &:focus,&:active{
+                        box-shadow: none;
+                    }
+                }
             }
         }
         .card-info{

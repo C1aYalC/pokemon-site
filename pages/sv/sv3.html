@@ -25,14 +25,21 @@
                 </a>
             </div>
         </header>
-        <main class="container mt-4 p-4">
-            <div class="row mb-4 set-info"> 
+        <main class="container mt-3 p-4">
+            <div class="row mb-3 set-info"> 
                 <div class="col-12 col-sm-8">
-                    <img class="img-fluid" src="../../lib/imgs/set-logos/OBF.png">
+                    <img class="img-fluid" src="../../lib/imgs/set-logos/sv3.png">
                 </div>
                 <div class="col-12 col-sm-4 align-self-center">
                     <div id="setInfo">
                         <!-- Auto Populated -->
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col set-progress">
+                    <div class="progress" role="progressbar" aria-label="Set Completion" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                        <div class="progress-bar" id="progressBar" style="width: 0%"></div>
                     </div>
                 </div>
             </div>
@@ -243,11 +250,13 @@
                         const cardImgHiResUrl = `${cardImgUrl}/${cardSetId}/${originalNumber}_hires.png`;
 
                         const cardElement = document.createElement('div');
-                        cardElement.setAttribute('class', `col-4 col-md-2 ${card.name} card-container`);
+                        cardElement.setAttribute('class', `col-6 col-md-2 ${card.name} card-container`);
                         cardElement.innerHTML = `
                             <div class="card">
                                 <img src="${card.images.small}" type="button" class="btn btn-primary" alt="${card.name}" data-bs-toggle="modal" data-bs-target="#${cardId}Modal" loading="lazy">
-                                
+                                <div class="card-check">
+                                    <input class="card-check-input form-check-input" id="${cardId}Input" type="checkbox" onchange="updateProgressBar()">
+                                </div>
                                 <div class="container card-details">
                                     <div class="row card-info">
                                         <div class="col-12 col-sm-8 pe-sm-0 text-center text-sm-start">
@@ -343,6 +352,85 @@
                         }
                     }
                 });
+
+                function updateProgressBar() {
+                    var checkboxes = document.querySelectorAll('.card-check-input');
+                    var filledPercentage = calculateFilledPercentage(checkboxes);
+                    updateProgressBarWidth(filledPercentage);
+                    saveCheckboxStates(checkboxes);
+                }
+
+                function calculateFilledPercentage(checkboxes) {
+                    var checkedCount = 0;
+                    checkboxes.forEach(function(checkbox) {
+                        if (checkbox.checked) {
+                            checkedCount++;
+                        }
+                    });
+                    var totalCheckboxes = checkboxes.length;
+                    return (checkedCount / totalCheckboxes) * 100;
+                }
+
+                function updateProgressBarWidth(percentage) {
+                    var progressBar = document.getElementById('progressBar');
+                    progressBar.style.width = percentage + '%';
+                    progressBar.setAttribute('aria-valuenow', percentage);
+                }
+
+                function saveCheckboxStates(checkboxes) {
+                    var checkboxStates = {};
+                    checkboxes.forEach(function(checkbox) {
+                        checkboxStates[checkbox.id] = checkbox.checked;
+                    });
+                    localStorage.setItem('checkboxStates', JSON.stringify(checkboxStates));
+                }
+
+                function loadCheckboxStates(checkboxes) {
+                    var storedStates = localStorage.getItem('checkboxStates');
+                    if (storedStates) {
+                        var checkboxStates = JSON.parse(storedStates);
+                        checkboxes.forEach(function(checkbox) {
+                            if (checkboxStates.hasOwnProperty(checkbox.id)) {
+                                checkbox.checked = checkboxStates[checkbox.id];
+                            }
+                        });
+                    }
+                }
+
+                function runUpdateScript() {
+                    function checkAndRun() {
+                        var setCardsDiv = document.getElementById('setCards');
+                        var checkboxes = setCardsDiv.querySelectorAll('.card-check-input');
+                        if (setCardsDiv && checkboxes.length > 0) {
+                            loadCheckboxStates(checkboxes);
+                            updateProgressBar();
+                            checkboxes.forEach(function(checkbox) {
+                                checkbox.addEventListener('click', function() {
+                                    saveCheckboxStates(checkboxes);
+                                });
+                            });
+                        } else {
+                            setTimeout(checkAndRun, 100);
+                        }
+                    }
+                    checkAndRun();
+                }
+                runUpdateScript();
+                
+                function checkAllCheckboxes() {
+                    var checkboxes = document.querySelectorAll('.card-check-input');
+                    checkboxes.forEach(function (checkbox) {
+                    checkbox.checked = true;
+                    });
+                }
+
+                // Event listener for the "Check All Checkboxes" button
+                var checkAllButton = document.getElementById('checkAllButton');
+                if (checkAllButton) {
+                    checkAllButton.addEventListener('click', function () {
+                    checkAllCheckboxes();
+                    });
+                }
             </script>
         </main>
     </body>
