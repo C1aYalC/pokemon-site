@@ -39,7 +39,10 @@
     background-color: $blueGray;
     border: 1px solid $blue;
     border-radius: 8px;
-    padding: 16px;
+    @include tabletAndBelow{
+        border: none;
+        background-color: transparent;
+    }
     .card-container{
         .card{
             background: transparent;
@@ -59,7 +62,7 @@
                 right: 0;
                 padding: 4px 8px;
                 input{
-                    background: transparentize($black, 0.25);;
+                    background: transparentize($black, 0.25);
                     background-image: none;
                     border: 1px solid $white;
                     padding: 12px;
