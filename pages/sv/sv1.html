@@ -36,23 +36,33 @@
                     </div>
                 </div>
             </div>
-            <div class="row mb-3">
+            <div class="row mb-3 d-flex align-items-center">
                 <div class="col set-progress">
                     <div class="progress" role="progressbar" aria-label="Set Completion" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
                         <div class="progress-bar" id="progressBar" style="width: 0%"></div>
+                    </div>
+                </div>
+                <div class="col-12 mt-2 col-md-3">
+                    <div class="row">
+                        <div class="col-6 pe-sm-0">
+                            <button type="button" class="btn btn-primary collection-check collection-add" id="selectAllButton">Add All</button>
+                        </div>
+                        <div class="col-6 pe-sm-0">
+                            <button type="button" class="btn btn-primary collection-check collection-remove" id="removeAllButton">Remove All</button>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col card-list p-0 p-sm-2" id="cardList">
                     <div class="container gx-1">
-                        <div class="row">
+                        <div class="row g-3" id="setCards">
+                            <!-- Auto Populated -->
+                        </div>
+                        <div class="row mt-2">
                             <div id="loading">
                                 <img class="d-block mx-auto" width="600" src="../../lib/imgs/loading.png" alt="Your Cards are Loading">
                             </div>
-                        </div>
-                        <div class="row g-3" id="setCards">
-                            <!-- Auto Populated -->
                         </div>
                     </div>
                 </div>
@@ -203,6 +213,7 @@
                     setCardsContainer.innerHTML = '';
 
                     setCodes.forEach(setCode => {
+                        const maxPages = 3;
                         let currentPage = 1;
 
                         const fetchAllPages = () => {
@@ -219,7 +230,8 @@
 
                                     const totalCards = response.data.totalCount;
                                     let cardCount = response.data.count;
-                                    if (cardCount < totalCards) {
+
+                                    if (cardCount < totalCards && currentPage < maxPages) {
                                         currentPage++;
                                         fetchAllPages();
                                     }
@@ -230,6 +242,15 @@
                         };
 
                         fetchAllPages();
+                    });
+                }
+
+                function formatCurrency(value) {
+                    return value.toLocaleString('en-US', {
+                        style: 'currency',
+                        currency: 'USD',
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2,
                     });
                 }
 
@@ -249,8 +270,11 @@
                         const cardImgUrl = "https://images.pokemontcg.io";
                         const cardImgHiResUrl = `${cardImgUrl}/${cardSetId}/${originalNumber}_hires.png`;
 
+                        const cardPrice = card.cardmarket.prices.averageSellPrice;
+                        const formattedPrice = formatCurrency(cardPrice);
+
                         const cardElement = document.createElement('div');
-                        cardElement.setAttribute('class', `col-6 col-md-2 ${card.name} card-container`);
+                        cardElement.setAttribute('class', `col-4 col-md-2 ${card.name} card-container`);
                         cardElement.innerHTML = `
                             <div class="card">
                                 <img src="${card.images.small}" type="button" class="btn btn-primary" alt="${card.name}" data-bs-toggle="modal" data-bs-target="#${cardId}Modal" loading="lazy">
@@ -263,7 +287,7 @@
                                             <p class="card-name">${card.name}</p>
                                         </div>
                                         <div class="col-12 col-sm-4 ps-sm-0 text-center text-sm-end align-items-end">
-                                            <p class="card-price">$${card.cardmarket.prices.averageSellPrice}</p>
+                                            <p class="card-price">${formattedPrice}</p>
                                         </div>
                                     </div>
                                     <div class="row card-info">
@@ -334,10 +358,6 @@
                     }
                 fetchAndDisplaySetCards();
 
-                setTimeout(function() {
-                    document.getElementById('loading').remove();
-                }, 10000);
-
                 window.addEventListener('scroll', function() {
                     var header = document.getElementById('mainHeader');
                     var targetDiv = document.getElementById('cardList');
@@ -398,6 +418,9 @@
                 }
 
                 function runUpdateScript() {
+                    setTimeout(function() {
+                        document.getElementById('loading').remove();
+                    }, 10000);
                     function checkAndRun() {
                         var setCardsDiv = document.getElementById('setCards');
                         var checkboxes = setCardsDiv.querySelectorAll('.card-check-input');
@@ -417,20 +440,37 @@
                 }
                 runUpdateScript();
                 
-                function checkAllCheckboxes() {
-                    var checkboxes = document.querySelectorAll('.card-check-input');
-                    checkboxes.forEach(function (checkbox) {
-                    checkbox.checked = true;
-                    });
-                }
+                document.addEventListener('DOMContentLoaded', function () {
+                    // Function to toggle checkboxes and swap button text
+                    function selectAllCheckboxes() {
+                        var checkboxes = document.querySelectorAll('.form-check-input');
+                        checkboxes.forEach(function (checkbox) {
+                        checkbox.checked = true;
+                        });
+                    }
+                    function deSelectAllCheckboxes() {
+                        var checkboxes = document.querySelectorAll('.form-check-input');
+                        checkboxes.forEach(function (checkbox) {
+                        checkbox.checked = false;
+                        });
+                    }
 
-                // Event listener for the "Check All Checkboxes" button
-                var checkAllButton = document.getElementById('checkAllButton');
-                if (checkAllButton) {
-                    checkAllButton.addEventListener('click', function () {
-                    checkAllCheckboxes();
-                    });
-                }
+                    // Event listener for the "Select All Checkboxes" button
+                    var selectAllButton = document.getElementById('selectAllButton');
+                    var removeAllButton = document.getElementById('removeAllButton');
+                    if (selectAllButton) {
+                        selectAllButton.addEventListener('click', function () {
+                        selectAllCheckboxes();
+                        updateProgressBar();
+                        });
+                    }
+                    if (removeAllButton) {
+                        removeAllButton.addEventListener('click', function () {
+                        deSelectAllCheckboxes();
+                        updateProgressBar();
+                        });
+                    }
+                });
             </script>
         </main>
     </body>

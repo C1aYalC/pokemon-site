@@ -31,25 +31,33 @@
         }
     }
 }
-
+.collection-check{
+    width: 100%;
+    &.collection-add{
+        background-color: $blue;
+        border: 1px solid $pureBlack;
+        color: $black;
+        @include notoSemiBold();
+    }
+    &.collection-remove{
+        background-color: $blueGray;
+        border: 1px solid $pureBlack;
+        color: $white;
+        @include notoSemiBold();
+    }
+}
 .card-details{
-    padding: 8px 4px;
+    background: transparentize($pureBlack, .35);
+    border-radius: 8px;
+    margin: 4px auto 8px;
+    padding: 8px;
 }
 .card-list{
-    background-color: $blueGray;
-    border: 1px solid $blue;
-    border-radius: 8px;
-    @include tabletAndBelow{
-        border: none;
-        background-color: transparent;
-    }
+    
     .card-container{
         .card{
             background: transparent;
-            padding: 4px;
-            @include tabletAndBelow{
-                padding: 0;
-            }
+            padding: 0px;
             img[type='button']{
                 background-color: transparent;
                 border: none;

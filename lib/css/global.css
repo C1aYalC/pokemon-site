@@ -246,29 +246,34 @@ body.modal-open {
   background: linear-gradient(0deg, rgb(119, 221, 119) 40%, rgb(151, 255, 151) 60%);
 }
 
-.card-details {
-  padding: 8px 4px;
+.collection-check {
+  width: 100%;
+}
+.collection-check.collection-add {
+  background-color: #78bbf6;
+  border: 1px solid #000000;
+  color: #222222;
+  font-family: "Noto Sans", "Arial", sans-serif;
+  font-weight: 600;
+}
+.collection-check.collection-remove {
+  background-color: #282f3d;
+  border: 1px solid #000000;
+  color: #f6f6f6;
+  font-family: "Noto Sans", "Arial", sans-serif;
+  font-weight: 600;
 }
 
-.card-list {
-  background-color: #282f3d;
-  border: 1px solid #78bbf6;
+.card-details {
+  background: rgba(0, 0, 0, 0.65);
   border-radius: 8px;
+  margin: 4px auto 8px;
+  padding: 8px;
 }
-@media (max-width: 1199px) {
-  .card-list {
-    border: none;
-    background-color: transparent;
-  }
-}
+
 .card-list .card-container .card {
   background: transparent;
-  padding: 4px;
-}
-@media (max-width: 1199px) {
-  .card-list .card-container .card {
-    padding: 0;
-  }
+  padding: 0px;
 }
 .card-list .card-container .card img[type=button] {
   background-color: transparent;
